@@ -102,4 +102,7 @@ public class AnimalBaseData extends Entitet{
     //Species can have more animals
     @ManyToOne
     private AnimalSpecies animalSpecies;
+    
+    @ManyToOne
+    private Nativity nativity;
 }
