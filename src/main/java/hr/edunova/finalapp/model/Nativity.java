@@ -19,5 +19,6 @@ public class Nativity extends Entitet {
     
     @ManyToMany
     private List<Vet> vets;
+    //B
     
 }
