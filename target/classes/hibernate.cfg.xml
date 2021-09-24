@@ -43,10 +43,11 @@
 
         
          <mapping class="hr.edunova.finalapp.model.Activity" />
-         <mapping class="hr.edunova.finalapp.model.AnimalBaseData" />
+         <mapping class="hr.edunova.finalapp.model.Animal" />
          <mapping class="hr.edunova.finalapp.model.AnimalSpecies" />
          <mapping class="hr.edunova.finalapp.model.Vet" />
-         <mapping class="hr.edunova.finalapp.model.Nativity" />
+         <mapping class="hr.edunova.finalapp.model.Birth" />
+         <mapping class="hr.edunova.finalapp.model.Event" />
          
 
        

@@ -14,6 +14,10 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Vet extends Entitet {
+    private String name;
+    private String surname;
+
+    
     private String phoneNumber; /*It is string beacuse phone numbers starts
     with zero or + which is problem if data type is integer
     */
@@ -24,6 +28,22 @@ public class Vet extends Entitet {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
     
     
