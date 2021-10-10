@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package hr.edunova.finalapp.model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -13,9 +14,17 @@ import javax.persistence.Entity;
 @Entity
 public class Activity extends Entitet {
     
+    
+    @Column(
+            columnDefinition = "VARCHAR(50)",
+            nullable = false
+    )
     private String name;
     
     
+    @Column(
+            nullable = false
+    )
     private boolean repet; /*if is true, you will get reminder
     when daysOfRepeating time expires  */
     private int daysOfRepeating; /*period which last until you 

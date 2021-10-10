@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package hr.edunova.finalapp.model;
-import java.util.Date;
+import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 /**
@@ -15,12 +16,31 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Animal extends Entitet{
     
+    @Column(
+            columnDefinition = "VARCHAR(25)",
+            nullable = false
+    )
     private String name;
-    private Date dateOfBirth; //check how to define date of birth
+    
+    @Column(
+            nullable = false
+    )
+    private LocalDate dateOfBirth; //check how to define date of birth
+    
+    @Column(
+            columnDefinition = "VARCHAR(25)",
+            nullable = false
+    )
     private String sex;
+    
+    
     private int chipCode;
     private int fatherId; //if exist in table
     private int motherId; //if exist in table
+    
+    @Column(
+            nullable = false
+    )
     private boolean active; //animal is death or live
 
     public String getName() {
@@ -31,11 +51,11 @@ public class Animal extends Entitet{
         this.name = name;
     }
     
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -5,8 +5,8 @@
  */
 package hr.edunova.finalapp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -14,10 +14,20 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Vet extends Entitet {
+    
+    @Column(
+            columnDefinition = "VARCHAR(25)",
+            nullable = false
+    )
     private String name;
+    
+    @Column(
+            columnDefinition = "VARCHAR(25)",
+            nullable = false
+    )
     private String surname;
 
-    
+     @Column(columnDefinition = "VARCHAR(20)")
     private String phoneNumber; /*It is string beacuse phone numbers starts
     with zero or + which is problem if data type is integer
     */

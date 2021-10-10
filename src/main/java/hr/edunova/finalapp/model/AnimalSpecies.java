@@ -5,6 +5,7 @@
  */
 package hr.edunova.finalapp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 
@@ -16,6 +17,10 @@ import javax.persistence.Entity;
 @Entity
 public class AnimalSpecies extends Entitet {
     
+    @Column(
+            columnDefinition = "VARCHAR(25)",
+            nullable = false
+    )
     private String name;
 
     public String getName() {

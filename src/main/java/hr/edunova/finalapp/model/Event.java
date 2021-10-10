@@ -5,8 +5,9 @@
  */
 package hr.edunova.finalapp.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -18,15 +19,47 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Event extends Entitet{
     
-    private Date date;
+    @Column(
+            nullable = false
+    )
+    private LocalDate date;
     private String description;
-        private boolean done; //turn off reminder
+    private boolean done; //turn off reminder
+     
+   @ManyToOne
+   private Animal animal;
+   
+   @ManyToMany
+   private List<Activity> activity;
+   
+   @ManyToOne
+   private Vet vet;
 
-    public Date getDate() {
+    public List<Activity> getActivity() {
+        return activity;
+    }
+
+    public void setActivity(List<Activity> activity) {
+        this.activity = activity;
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
+    }
+   
+   
+       //one activity can have one Vet
+    //Vet can have more activity
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -38,21 +71,7 @@ public class Event extends Entitet{
         this.animal = animal;
     }
 
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public void setActivity(Activity activity) {
-        this.activity = activity;
-    }
-
-    public List<Vet> getVet() {
-        return vet;
-    }
-
-    public void setVet(List<Vet> vet) {
-        this.vet = vet;
-    }
+   
     
      //one visit can have one animal
     //animal can have more activity
@@ -71,16 +90,8 @@ public class Event extends Entitet{
     public void setDone(boolean done) {
         this.done = done;
     }
-   @ManyToOne
-   private Animal animal;
-   
-   @ManyToOne
-   private Activity activity;
-   
-       //one activity can have one Vet
-    //Vet can have more activity
-    @ManyToMany
-    private List<Vet> vet;
+  
+  
     
     
 }
