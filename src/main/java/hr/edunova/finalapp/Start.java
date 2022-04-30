@@ -6,14 +6,18 @@
 package hr.edunova.finalapp;
 
 import hr.edunova.finalapp.util.HibernateUtil;
+import hr.edunova.finalapp.view.LoadingScreen;
+
 
 /**
  *
  * @author Dalibor
  */
 public class Start {
+    
     public static void main(String[] args) {
-        HibernateUtil.getSession();
+        new LoadingScreen().setVisible(true);
+       // HibernateSessionPocetniInsert.odradiPosao();
     }
     
 }
