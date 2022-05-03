@@ -32,7 +32,6 @@ public class LoadingScreen extends javax.swing.JFrame {
              Session s = HibernateUtil.getSession();
             if(s.getMetamodel().getEntities().size()>0){
                 new Authorization().setVisible(true);
-                System.out.println("Odradio sam ucitavanje baze");
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");

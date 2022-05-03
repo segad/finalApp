@@ -5,7 +5,6 @@
  */
 package hr.edunova.finalapp.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -13,48 +12,7 @@ import javax.persistence.Entity;
  * @author Dalibor
  */
 @Entity
-public class Vet extends Entitet {
+public class Vet extends Person {
     
-    @Column(
-            columnDefinition = "VARCHAR(25)",
-            nullable = false
-    )
-    private String name;
-    
-    @Column(
-            columnDefinition = "VARCHAR(25)",
-            nullable = false
-    )
-    private String surname;
 
-     @Column(columnDefinition = "VARCHAR(20)")
-    private String phoneNumber; /*It is string beacuse phone numbers starts
-    with zero or + which is problem if data type is integer
-    */
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-    
-    
 }
