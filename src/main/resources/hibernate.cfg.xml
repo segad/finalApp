@@ -45,10 +45,11 @@
          <mapping class="hr.edunova.finalapp.model.Activity" />
          <mapping class="hr.edunova.finalapp.model.Animal" />
          <mapping class="hr.edunova.finalapp.model.AnimalSpecies" />
+         <mapping class="hr.edunova.finalapp.model.User" />
          <mapping class="hr.edunova.finalapp.model.Vet" />
          <mapping class="hr.edunova.finalapp.model.Birth" />
          <mapping class="hr.edunova.finalapp.model.Event" />
-         <mapping class="hr.edunova.finalapp.model.User" />
+         
          
 
        

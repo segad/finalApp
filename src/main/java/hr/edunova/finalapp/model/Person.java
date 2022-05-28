@@ -6,12 +6,14 @@
 package hr.edunova.finalapp.model;
 
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author Dalibor
  */
-public class Person extends Entitet {
+@MappedSuperclass
+public abstract class Person extends Entitet {
     
      @Column(
             columnDefinition = "VARCHAR(25)",
