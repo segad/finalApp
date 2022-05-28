@@ -34,7 +34,7 @@ public class LoadingScreen extends javax.swing.JFrame {
                 new Authorization().setVisible(true);
                 dispose();
             }else{
-                JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
+                JOptionPane.showMessageDialog(getRootPane(), "Database error");
             }
         }
         
@@ -51,6 +51,8 @@ public class LoadingScreen extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setUndecorated(true);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FarmAnimals.jpg"))); // NOI18N
         jLabel1.setToolTipText("");
 
@@ -66,6 +68,7 @@ public class LoadingScreen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
