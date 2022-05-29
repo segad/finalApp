@@ -12,7 +12,7 @@ import hr.edunova.finalapp.util.AppException;
  *
  * @author Dalibor
  */
-public abstract class ProcessingPerson<T extends Person>  extends Processing<T>{
+public abstract class ControllingPerson<T extends Person>  extends Controlling<T>{
 
     @Override
     protected void controlCreate() throws AppException {
@@ -29,32 +29,49 @@ public abstract class ProcessingPerson<T extends Person>  extends Processing<T>{
     }
      
     private void controlName() throws AppException {
-        if(!nameWrong(entity.getName())){
-            throw new AppException("Name wrong");
+        if(nameWrong(entity.getName())){
+            throw new AppException("Name can't contain a numbers");
         }
     }
     
      private void controlSurname() throws AppException {
         if(!surnameWrong(entity.getSurname())){
-            throw new AppException("Surname wrong");
+            throw new AppException("Surname can't contain a numbers");
         }
     }
 
     private void controlPhoneNumber() throws AppException {
         if(!phoneNumberWrong(entity.getPhoneNumber())){
-            throw new AppException("Phone number wrong");
+            throw new AppException("Phone number can't contain a letters");
         }
     }
 
     private boolean nameWrong(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        char[] chars = name.toCharArray();
+        boolean numberInName = false;
+        for(char c : chars){
+         if(Character.isDigit(c)){
+             numberInName = true; 
+         }
+        }
+         return numberInName;
+        
     }
 
     private boolean surnameWrong(String surname) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        char[] chars = surname.toCharArray();
+        boolean numberInSurame = false;
+        for(char c : chars){
+         if(Character.isDigit(c)){
+             numberInSurame = true; 
+         }
+        }
+         return numberInSurame;
     }
 
     private boolean phoneNumberWrong(String phoneNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String str = phoneNumber;
+        boolean result = phoneNumber.matches("[a-zA-Z]+");
+        return result;
     }
 }

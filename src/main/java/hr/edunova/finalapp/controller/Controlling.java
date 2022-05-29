@@ -15,7 +15,7 @@ import hr.edunova.finalapp.util.AppException;
  *
  * @author Dalibor
  */
-public abstract class Processing<T> {
+public abstract class Controlling<T> {
     
     protected Session session;
     protected T entity;
@@ -25,7 +25,7 @@ public abstract class Processing<T> {
     protected abstract void controlUpdate() throws AppException;
     protected abstract void controlDelete() throws AppException;
     
-    public Processing() {
+    public Controlling() {
         this.session = HibernateUtil.getSession();
         //this.session.setCacheMode(CacheMode.REFRESH);
     }
