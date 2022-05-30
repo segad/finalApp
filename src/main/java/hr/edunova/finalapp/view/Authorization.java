@@ -5,6 +5,9 @@
  */
 package hr.edunova.finalapp.view;
 
+import hr.edunova.finalapp.controller.ControllingUser;
+import hr.edunova.finalapp.model.User;
+import hr.edunova.finalapp.util.ApplicationInfo;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,11 +16,18 @@ import javax.swing.JOptionPane;
  */
 public class Authorization extends javax.swing.JFrame {
 
+    private ControllingUser controllingUser;
     /**
      * Creates new form Authorization
      */
     public Authorization() {
         initComponents();
+        controllingUser = new ControllingUser();
+        settings();
+    }
+    
+    private void settings(){
+        setTitle(ApplicationInfo.APP_TITLE + " Authorization");
     }
 
     /**
@@ -124,8 +134,21 @@ public class Authorization extends javax.swing.JFrame {
             return;
         }
         
-        //Catching password
-        
+       //Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
+       User user = controllingUser.authorize(username, password);
+       
+       if(user==null){
+             JOptionPane.showMessageDialog(getRootPane(), "Invalid email and password combination");
+            return;
+        }
+       
+       //Aplikacija.operater=oper;
+       //new Izbornik().setVisible(true);
+       //dispose();
+       
+       ApplicationInfo.user = user;
+       new MainMenu().setVisible(true);
+       dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

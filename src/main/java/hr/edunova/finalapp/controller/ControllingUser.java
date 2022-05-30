@@ -9,6 +9,9 @@ import hr.edunova.finalapp.model.User;
 import hr.edunova.finalapp.util.AppException;
 import java.util.List;
 import java.util.regex.*;
+import javax.persistence.NoResultException;
+import org.mindrot.jbcrypt.BCrypt;
+
 
 
 /**
@@ -21,10 +24,15 @@ public class ControllingUser extends ControllingPerson<User>{
     public List<User> read() {
         return session.createQuery("from User").list();
     }
-
+    
     @Override
     protected void controlDelete() throws AppException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    protected void controlCreate() throws AppException {
+        super.controlCreate();
     }
     
      private void controlUsername() throws AppException {
@@ -40,6 +48,22 @@ public class ControllingUser extends ControllingPerson<User>{
         }
     }
     
+    public User authorize(String email, String password){
+        User user=null;
+        try{
+            user = (User)session.createQuery("from User u where u.email=:email")
+                .setParameter("email", email).getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+     
+        
+        if(user==null){
+            return null;
+        }
+        
+        return BCrypt.checkpw(email, user.getPassword())? user : null;
+    }
 
     public static boolean isValidUsername(String name)
     {

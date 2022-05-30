@@ -15,16 +15,16 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Person extends Entitet {
     
-     @Column(
-            columnDefinition = "VARCHAR(25)",
-            nullable = false
-    )
+//     @Column(
+//            columnDefinition = "VARCHAR(25)",
+//            nullable = false
+//    )
     private String name;
     
-    @Column(
-            columnDefinition = "VARCHAR(25)",
-            nullable = false
-    )
+//    @Column(
+//            columnDefinition = "VARCHAR(25)",
+//            nullable = false
+//    )
     private String surname;
 
      @Column(columnDefinition = "VARCHAR(20)")

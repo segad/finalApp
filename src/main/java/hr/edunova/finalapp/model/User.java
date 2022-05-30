@@ -15,16 +15,16 @@ import javax.persistence.Entity;
 @Entity
 public class User extends Person{
     
-    @Column(
-     columnDefinition = "VARCHAR(25)",
-            nullable = false
-    )
+//    @Column(
+//     columnDefinition = "VARCHAR(25)",
+//            nullable = false
+//    )
     private String username;
     
-    @Column(
-     columnDefinition = "VARCHAR(25)",
-            nullable = false
-    )
+//    @Column(
+//     columnDefinition = "VARCHAR(25)",
+//            nullable = false
+//    )
     private String password;
 
     public String getUsername() {

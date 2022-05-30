@@ -5,7 +5,7 @@
  */
 package hr.edunova.finalapp;
 
-import hr.edunova.finalapp.util.HibernateUtil;
+import hr.edunova.finalapp.util.HibernateUtilFirstInsert;
 import hr.edunova.finalapp.view.LoadingScreen;
 
 
@@ -16,8 +16,9 @@ import hr.edunova.finalapp.view.LoadingScreen;
 public class Start {
     
     public static void main(String[] args) {
-        new LoadingScreen().setVisible(true);
-       // HibernateSessionPocetniInsert.odradiPosao();
+        HibernateUtilFirstInsert.putDataIntoDatabase();
+        //new LoadingScreen().setVisible(true);
+        
     }
     
 }
