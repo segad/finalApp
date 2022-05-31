@@ -135,7 +135,7 @@ public class Authorization extends javax.swing.JFrame {
         }
         
        //Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
-       User user = controllingUser.authorize(username, password);
+       User user = controllingUser.authorize(txtUsername.getText(), password);
        
        if(user==null){
              JOptionPane.showMessageDialog(getRootPane(), "Invalid email and password combination");

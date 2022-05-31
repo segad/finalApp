@@ -48,11 +48,11 @@ public class ControllingUser extends ControllingPerson<User>{
         }
     }
     
-    public User authorize(String email, String password){
+    public User authorize(String username, String password){
         User user=null;
         try{
-            user = (User)session.createQuery("from User u where u.email=:email")
-                .setParameter("email", email).getSingleResult();
+            user = (User)session.createQuery("from User u where u.username=:username")
+                .setParameter("username", username).getSingleResult();
         }catch(NoResultException e){
             return null;
         }
@@ -62,7 +62,7 @@ public class ControllingUser extends ControllingPerson<User>{
             return null;
         }
         
-        return BCrypt.checkpw(email, user.getPassword())? user : null;
+        return BCrypt.checkpw(username, user.getPassword())? user : null;
     }
 
     public static boolean isValidUsername(String name)

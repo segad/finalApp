@@ -20,6 +20,7 @@ public class HibernateUtilFirstInsert {
     public static void putDataIntoDatabase(){
         Session s = HibernateUtil.getSession();
         
+         s.beginTransaction();
         
         User u = new User();
         //u.setId(1L);
@@ -27,7 +28,7 @@ public class HibernateUtilFirstInsert {
         u.setSurname("Peterson");
         u.setUsername("peter");
         //u.setPassword("peterson");
-        u.setPassword(BCrypt.hashpw("o", BCrypt.gensalt()));
+        u.setPassword(BCrypt.hashpw("peterson", BCrypt.gensalt()));
         
         s.save(u);
         
