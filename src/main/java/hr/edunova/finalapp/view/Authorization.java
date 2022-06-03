@@ -49,11 +49,21 @@ public class Authorization extends javax.swing.JFrame {
 
         jLabel1.setText("Username");
 
-        txtUsername.setText("user@user.com");
+        txtUsername.setText("peter");
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Password");
 
-        pswPassword.setText("jPasswordField1");
+        pswPassword.setText("peterson");
+        pswPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswPasswordActionPerformed(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -127,29 +137,37 @@ public class Authorization extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getRootPane(), "Username mandatory");
             return;
         }
+        System.out.print(username);
         
         String password = String.valueOf(pswPassword.getPassword());
         if(password.trim().length() == 0){
             JOptionPane.showMessageDialog(getRootPane(), "Pasword mandatory");
             return;
         }
-        
-       //Operater oper = obradaOperater.autoriziraj(txtEmail.getText(), lozinka);
-       User user = controllingUser.authorize(txtUsername.getText(), password);
        
+      
+       User user = controllingUser.authorize(username, password);
+//       
+//       
        if(user==null){
              JOptionPane.showMessageDialog(getRootPane(), "Invalid email and password combination");
             return;
         }
-       
-       //Aplikacija.operater=oper;
-       //new Izbornik().setVisible(true);
-       //dispose();
-       
+   
+     
        ApplicationInfo.user = user;
+
        new MainMenu().setVisible(true);
        dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void pswPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pswPasswordActionPerformed
 
     /**
      * @param args the command line arguments

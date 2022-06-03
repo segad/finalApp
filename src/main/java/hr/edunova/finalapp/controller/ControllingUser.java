@@ -22,7 +22,48 @@ public class ControllingUser extends ControllingPerson<User>{
 
     @Override
     public List<User> read() {
-        return session.createQuery("from User").list();
+        return session.createQuery("from user").list();
+    }
+    
+  
+    
+//    @Override
+//    protected void controlCreate() throws AppException {
+//        super.controlCreate();
+//    }
+//    
+//     private void controlUsername() throws AppException {
+//        if(!isValidUsername(entity.getUsername())){
+//            throw new AppException("Invalid username");
+//        }
+//    }
+//        
+//    private void controlPassword() throws AppException {
+//        
+//       if(!isValidPassword(entity.getPassword())){
+//            throw new AppException("Invalid password");
+//        }
+//    }
+    
+    public User authorize(String username, String password){
+        User user=null;
+        try{
+            user = (User)session.createQuery("from user u where u.username=:username").setParameter("username", username).getSingleResult();
+            
+        }catch(NoResultException e){
+            System.out.print("Neispravan username");
+            return null;
+            
+        }
+        System.out.print("dohvatio sam username" + user +"\n");
+        
+        if(user==null){
+            System.out.print("Nema ničega u bazi");
+            return null;
+        }
+        
+        System.out.println("Dosao sam do tu");
+        return BCrypt.checkpw(password, user.getPassword())? user : null;
     }
     
     @Override
@@ -30,41 +71,6 @@ public class ControllingUser extends ControllingPerson<User>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    @Override
-    protected void controlCreate() throws AppException {
-        super.controlCreate();
-    }
-    
-     private void controlUsername() throws AppException {
-        if(!isValidUsername(entity.getUsername())){
-            throw new AppException("Invalid username");
-        }
-    }
-        
-    private void controlPassword() throws AppException {
-        
-       if(!isValidPassword(entity.getPassword())){
-            throw new AppException("Invalid password");
-        }
-    }
-    
-    public User authorize(String username, String password){
-        User user=null;
-        try{
-            user = (User)session.createQuery("from User u where u.username=:username")
-                .setParameter("username", username).getSingleResult();
-        }catch(NoResultException e){
-            return null;
-        }
-     
-        
-        if(user==null){
-            return null;
-        }
-        
-        return BCrypt.checkpw(username, user.getPassword())? user : null;
-    }
-
     public static boolean isValidUsername(String name)
     {
   

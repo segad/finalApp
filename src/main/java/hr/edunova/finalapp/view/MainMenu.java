@@ -5,6 +5,8 @@
  */
 package hr.edunova.finalapp.view;
 
+import hr.edunova.finalapp.util.ApplicationInfo;
+
 /**
  *
  * @author Dalibor
@@ -16,6 +18,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        settings();
     }
 
     /**
@@ -27,7 +30,87 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuBar1 = new java.awt.MenuBar();
+        menu1 = new java.awt.Menu();
+        menu2 = new java.awt.Menu();
+        menuBar2 = new java.awt.MenuBar();
+        menu3 = new java.awt.Menu();
+        menu4 = new java.awt.Menu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemAnimals = new javax.swing.JMenuItem();
+        jMenuItemVet = new javax.swing.JMenuItem();
+        jMenuItemActivity = new javax.swing.JMenuItem();
+        jMenuItemEvent = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemERA = new javax.swing.JMenuItem();
+        jMenuItemExit = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
+        menu1.setLabel("File");
+        menuBar1.add(menu1);
+
+        menu2.setLabel("Edit");
+        menuBar1.add(menu2);
+
+        menu3.setLabel("File");
+        menuBar2.add(menu3);
+
+        menu4.setLabel("Edit");
+        menuBar2.add(menu4);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Start");
+
+        jMenuItemAnimals.setText("Animals");
+        jMenuItemAnimals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAnimalsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemAnimals);
+
+        jMenuItemVet.setText("Vet");
+        jMenuItemVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVetActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemVet);
+
+        jMenuItemActivity.setText("Activity");
+        jMenuItemActivity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActivityActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemActivity);
+
+        jMenuItemEvent.setText("Event");
+        jMenuItemEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEventActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemEvent);
+        jMenu1.add(jSeparator1);
+
+        jMenuItemERA.setText("ERA diagram");
+        jMenu1.add(jMenuItemERA);
+
+        jMenuItemExit.setText("Exit");
+        jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExitActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemExit);
+
+        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,47 +120,58 @@ public class MainMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnimalsActionPerformed
+       new WindowAnimals().setVisible(true);
+    }//GEN-LAST:event_jMenuItemAnimalsActionPerformed
+
+    private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenuItemExitActionPerformed
+
+    private void jMenuItemVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVetActionPerformed
+        new WindowVet().setVisible(true);
+    }//GEN-LAST:event_jMenuItemVetActionPerformed
+
+    private void jMenuItemActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActivityActionPerformed
+       new WindowActivity().setVisible(true);
+    }//GEN-LAST:event_jMenuItemActivityActionPerformed
+
+    private void jMenuItemEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEventActionPerformed
+        new WindowEvent().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEventActionPerformed
+
+    private void settings() {
+        setTitle(ApplicationInfo.getTitle("Main menu"));
+    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemActivity;
+    private javax.swing.JMenuItem jMenuItemAnimals;
+    private javax.swing.JMenuItem jMenuItemERA;
+    private javax.swing.JMenuItem jMenuItemEvent;
+    private javax.swing.JMenuItem jMenuItemExit;
+    private javax.swing.JMenuItem jMenuItemVet;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private java.awt.Menu menu1;
+    private java.awt.Menu menu2;
+    private java.awt.Menu menu3;
+    private java.awt.Menu menu4;
+    private java.awt.MenuBar menuBar1;
+    private java.awt.MenuBar menuBar2;
     // End of variables declaration//GEN-END:variables
 }

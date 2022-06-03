@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  *
  * @author Dalibor
  */
-@Entity
+@Entity(name = "user")
 public class User extends Person{
     
 //    @Column(

@@ -17,7 +17,7 @@ public class ApplicationInfo {
     
     public static User user;
     
-    public static String getNaslov(String window_title){
+    public static String getTitle(String window_title){
         if(ApplicationInfo.user==null){
             return ApplicationInfo.APP_TITLE;
         }
