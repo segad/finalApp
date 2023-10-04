@@ -5,6 +5,9 @@
  */
 package hr.edunova.finalapp.util;
 import hr.edunova.finalapp.model.User;
+import hr.edunova.finalapp.model.Vet;
+import hr.edunova.finalapp.model.AnimalSpecies;
+import com.github.javafaker.Faker;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +24,8 @@ public class HibernateUtilFirstInsert {
         Session s = HibernateUtil.getSession();
         
          s.beginTransaction();
-        
+        Faker faker = new Faker(); 
+         
         User u = new User();
         //u.setId(1L);
         u.setName("Peter");
@@ -30,8 +34,23 @@ public class HibernateUtilFirstInsert {
         //u.setPassword("peterson");
         u.setPassword(BCrypt.hashpw("peterson", BCrypt.gensalt()));
         
-        s.save(u);
+       
+        //List <Vet> vets = new ArrayList<>();
+        Vet v;
+        AnimalSpecies as;
+        for (int i = 0; i < 30; i++) {
+            v = new Vet();
+            as = new AnimalSpecies();
+            v.setName(faker.name().firstName());
+            v.setSurname(faker.name().lastName());
+            v.setPhoneNumber(faker.phoneNumber().cellPhone());
+            s.save(v);
+            
+            as.setName(faker.animal().name());
+            s.save(as);
+        }
         
+        s.save(u);
         s.getTransaction().commit();
     }
 }

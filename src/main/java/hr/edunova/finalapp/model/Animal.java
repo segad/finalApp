@@ -34,7 +34,6 @@ public class Animal extends Entitet{
     private String sex;
     
     
-    private int chipCode;
     private int fatherId; //if exist in table
     private int motherId; //if exist in table
     
@@ -76,13 +75,7 @@ public class Animal extends Entitet{
         this.sex = sex;
     }
 
-    public int getChipCode() {
-        return chipCode;
-    }
 
-    public void setChipCode(int chipCode) {
-        this.chipCode = chipCode;
-    }
 
     public int getFatherId() {
         return fatherId;

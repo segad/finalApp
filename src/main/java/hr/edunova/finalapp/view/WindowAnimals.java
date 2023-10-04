@@ -34,17 +34,60 @@ public class WindowAnimals extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblAnimalsLabel = new javax.swing.JLabel();
+        lblAnimalsSearch = new javax.swing.JLabel();
+        txtAnimalsSearch = new javax.swing.JTextField();
+        btnAnimalsSearch = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstAnimals1 = new javax.swing.JList<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        lblAnimalsLabel.setBackground(new java.awt.Color(204, 204, 204));
+        lblAnimalsLabel.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        lblAnimalsLabel.setText("Animals window");
+        lblAnimalsLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblAnimalsSearch.setText("Type name, species or ID");
+
+        btnAnimalsSearch.setText("Search");
+
+        lstAnimals1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lstAnimals1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(lblAnimalsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblAnimalsSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAnimalsSearch)))
+                .addGap(33, 33, 33)
+                .addComponent(btnAnimalsSearch)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblAnimalsLabel)
+                .addGap(18, 18, 18)
+                .addComponent(lblAnimalsSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAnimalsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnimalsSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 78, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,5 +131,11 @@ public class WindowAnimals extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnimalsSearch;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAnimalsLabel;
+    private javax.swing.JLabel lblAnimalsSearch;
+    private javax.swing.JList<String> lstAnimals1;
+    private javax.swing.JTextField txtAnimalsSearch;
     // End of variables declaration//GEN-END:variables
 }

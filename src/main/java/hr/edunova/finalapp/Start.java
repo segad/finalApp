@@ -16,7 +16,7 @@ import hr.edunova.finalapp.view.LoadingScreen;
 public class Start {
     
     public static void main(String[] args) {
-//        HibernateUtilFirstInsert.putDataIntoDatabase();
+        //HibernateUtilFirstInsert.putDataIntoDatabase();
         new LoadingScreen().setVisible(true);
         
     }

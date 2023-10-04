@@ -36,14 +36,16 @@ public class MainMenu extends javax.swing.JFrame {
         menuBar2 = new java.awt.MenuBar();
         menu3 = new java.awt.Menu();
         menu4 = new java.awt.Menu();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenu = new javax.swing.JMenu();
         jMenuItemAnimals = new javax.swing.JMenuItem();
         jMenuItemVet = new javax.swing.JMenuItem();
         jMenuItemActivity = new javax.swing.JMenuItem();
         jMenuItemEvent = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemERA = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemExit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -61,7 +63,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Start");
+        jLabel1.setText("Welcome to animall assistant app");
+
+        jMenu.setText("Start");
 
         jMenuItemAnimals.setText("Animals");
         jMenuItemAnimals.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +73,7 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItemAnimalsActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemAnimals);
+        jMenu.add(jMenuItemAnimals);
 
         jMenuItemVet.setText("Vet");
         jMenuItemVet.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +81,7 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItemVetActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemVet);
+        jMenu.add(jMenuItemVet);
 
         jMenuItemActivity.setText("Activity");
         jMenuItemActivity.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +89,7 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItemActivityActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemActivity);
+        jMenu.add(jMenuItemActivity);
 
         jMenuItemEvent.setText("Event");
         jMenuItemEvent.addActionListener(new java.awt.event.ActionListener() {
@@ -93,11 +97,12 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItemEventActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemEvent);
-        jMenu1.add(jSeparator1);
+        jMenu.add(jMenuItemEvent);
+        jMenu.add(jSeparator1);
 
         jMenuItemERA.setText("ERA diagram");
-        jMenu1.add(jMenuItemERA);
+        jMenu.add(jMenuItemERA);
+        jMenu.add(jSeparator2);
 
         jMenuItemExit.setText("Exit");
         jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
@@ -105,9 +110,9 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItemExitActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemExit);
+        jMenu.add(jMenuItemExit);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu);
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -116,11 +121,17 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jLabel1)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jLabel1)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,7 +168,8 @@ public class MainMenu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemActivity;
@@ -167,6 +179,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemExit;
     private javax.swing.JMenuItem jMenuItemVet;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.Menu menu3;
