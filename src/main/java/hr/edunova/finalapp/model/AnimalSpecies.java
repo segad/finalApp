@@ -31,4 +31,8 @@ public class AnimalSpecies extends Entitet {
         this.name = name;
     }
     
+    @Override
+    public String toString() {
+        return name;
+    }
 }

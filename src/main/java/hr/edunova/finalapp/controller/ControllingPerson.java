@@ -35,13 +35,13 @@ public abstract class ControllingPerson<T extends Person>  extends Controlling<T
     }
     
      private void controlSurname() throws AppException {
-        if(!surnameWrong(entity.getSurname())){
+        if(surnameWrong(entity.getSurname())){
             throw new AppException("Surname can't contain a numbers");
         }
     }
 
     private void controlPhoneNumber() throws AppException {
-        if(!phoneNumberWrong(entity.getPhoneNumber())){
+        if(phoneNumberWrong(entity.getPhoneNumber())){
             throw new AppException("Phone number can't contain a letters");
         }
     }

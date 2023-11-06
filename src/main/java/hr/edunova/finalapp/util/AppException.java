@@ -18,7 +18,8 @@ public class AppException extends Exception {
         this.message = message;
     }
 
-    public String getPoruka() {
+    public String getMessage() {
         return message;
     }
 }
+ 

@@ -8,7 +8,9 @@ package hr.edunova.finalapp.view;
 import hr.edunova.finalapp.controller.ControllingVet;
 import hr.edunova.finalapp.model.Vet;
 import hr.edunova.finalapp.util.ApplicationInfo;
+import hr.edunova.finalapp.util.AppException;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,16 +27,35 @@ public class WindowVet extends javax.swing.JFrame {
         initComponents();
         settings();
         controller = new ControllingVet();
+        loadList();
     }
     private void settings() {
         setTitle(ApplicationInfo.getTitle("Vet"));
     }
     
-        public void loadList(){
-        DefaultListModel<Vet> m = new DefaultListModel<>();        
-        controller.read().forEach(p->{m.addElement(p);});        
-        //lstEntites.setModel(m.isEmpty(p););
+
+     
+      public void setValueIntoEntity() {
+        var e = controller.getEntitet();
+        e.setName(txtName.getText());
+        e.setSurname(txtSurname.getText());
+        e.setPhoneNumber(txtPhone.getText());
+
+        //zamislimo da na formi ima 48 svojstava
+        // rješenje 1: korištenje JavaBeans
+        // rješenje 2: korištenje Reflection framework-a
     }
+
+     //@Override
+     public void loadList(){
+        DefaultListModel<Vet> m = new DefaultListModel<>();        
+        controller.read().forEach(s->{
+            m.addElement(s);
+            System.out.println(s);
+        });        
+        lstEntites.setModel(m);
+    } 
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,15 +68,51 @@ public class WindowVet extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEntites = new javax.swing.JList<>();
+        txtName = new javax.swing.JTextField();
+        varName = new javax.swing.JLabel();
+        txtSurname = new javax.swing.JTextField();
+        varSurname = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JTextField();
+        varPhone = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        btnChange = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lstEntites.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        lstEntites.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEntitesValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(lstEntites);
+
+        varName.setText("Name");
+
+        varSurname.setText("Surname");
+
+        varPhone.setText("Phone");
+
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        btnChange.setText("Change");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,14 +120,50 @@ public class WindowVet extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(varName)
+                                .addComponent(txtName)
+                                .addComponent(txtSurname)
+                                .addComponent(varSurname)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(varPhone)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnChange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(varName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(varSurname)
+                        .addGap(1, 1, 1)
+                        .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(varPhone)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnChange)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -78,8 +171,61 @@ public class WindowVet extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lstEntitesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitesValueChanged
+        if(evt.getValueIsAdjusting() || lstEntites.getSelectedValue()==null){
+            return;
+        }
+        controller.setEntitet(lstEntites.getSelectedValue());
+        var e = controller.getEntitet();
+        txtName.setText(e.getName());
+        txtSurname.setText(e.getSurname());
+        txtPhone.setText(e.getPhoneNumber());
+    }//GEN-LAST:event_lstEntitesValueChanged
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        controller.setEntitet(new Vet());
+        setValueIntoEntity();
+        try {
+            controller.create();
+            loadList();
+        } catch (AppException ae) {
+            JOptionPane.showMessageDialog(getParent(), ae.getMessage());
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        setValueIntoEntity();
+        try {
+            controller.update();
+            loadList();
+        } catch (AppException ae) {
+            JOptionPane.showMessageDialog(getParent(), ae.getMessage());
+        }
+    }//GEN-LAST:event_btnChangeActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        setValueIntoEntity();
+        try {
+            controller.delete();
+            loadList();
+        } catch (AppException ae) {
+            JOptionPane.showMessageDialog(getParent(), ae.getMessage());
+        }       
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnChange;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> lstEntites;
+    private javax.swing.JList<Vet> lstEntites;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtSurname;
+    private javax.swing.JLabel varName;
+    private javax.swing.JLabel varPhone;
+    private javax.swing.JLabel varSurname;
     // End of variables declaration//GEN-END:variables
+
+
 }

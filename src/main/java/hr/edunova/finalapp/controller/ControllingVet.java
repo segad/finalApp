@@ -23,7 +23,8 @@ public class ControllingVet extends ControllingPerson<Vet>{
 
     @Override
     protected void controlDelete() throws AppException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //place to set exception
     }
     
     @Override

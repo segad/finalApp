@@ -55,5 +55,9 @@ public abstract class Person extends Entitet {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
     
 }

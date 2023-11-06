@@ -5,26 +5,43 @@
  */
 package hr.edunova.finalapp.view;
 
+import hr.edunova.finalapp.controller.ControllingAnimalSpecies;
 import hr.edunova.finalapp.util.ApplicationInfo;
+import hr.edunova.finalapp.model.Animal;
+import hr.edunova.finalapp.model.AnimalSpecies;
+import hr.edunova.finalapp.util.AppException;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author Dalibor
  */
 public class WindowAnimals extends javax.swing.JFrame {
-
+    private ControllingAnimalSpecies controller;
     /**
      * Creates new form Animals
      */
     public WindowAnimals() {
         initComponents();
         settings();
+        controller = new ControllingAnimalSpecies();
+        loadList();
     }
     
     private void settings() {
         setTitle(ApplicationInfo.getTitle("Animals"));
     }
 
+    private void loadList() {
+        DefaultListModel<AnimalSpecies> m = new DefaultListModel<>();        
+        controller.read().forEach(s->{
+            m.addElement(s);
+            System.out.println(s);
+        });        
+        lstAnimalSpecies.setModel(m);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +56,7 @@ public class WindowAnimals extends javax.swing.JFrame {
         txtAnimalsSearch = new javax.swing.JTextField();
         btnAnimalsSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstAnimals1 = new javax.swing.JList<>();
+        lstAnimalSpecies = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,12 +69,7 @@ public class WindowAnimals extends javax.swing.JFrame {
 
         btnAnimalsSearch.setText("Search");
 
-        lstAnimals1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(lstAnimals1);
+        jScrollPane1.setViewportView(lstAnimalSpecies);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,12 +80,11 @@ public class WindowAnimals extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblAnimalsSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtAnimalsSearch)))
+                    .addComponent(lblAnimalsSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAnimalsSearch))
                 .addGap(33, 33, 33)
                 .addComponent(btnAnimalsSearch)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +146,9 @@ public class WindowAnimals extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAnimalsLabel;
     private javax.swing.JLabel lblAnimalsSearch;
-    private javax.swing.JList<String> lstAnimals1;
+    private javax.swing.JList<AnimalSpecies> lstAnimalSpecies;
     private javax.swing.JTextField txtAnimalsSearch;
     // End of variables declaration//GEN-END:variables
+
+
 }
